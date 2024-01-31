@@ -1,13 +1,20 @@
+:root{
+  --background-1: #101112; 
+  --background-2: #1e1e1e; 
+  --background-3: #252525; 
+  --background-4: #313131; 
+
+  --text-1: #eeeeee; 
+
+  --accent-1:#cc6d08; 
+  --accent-2:#ff8400; 
+}
+
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+  font-family: Kanit, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-}
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
 }

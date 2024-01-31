@@ -1,0 +1,30 @@
+.app{
+  width: 100%; 
+  min-height: 100vh;
+  padding: 10px 0px; 
+  box-sizing: border-box;
+  background-color: var(--background-1);
+  color: var(--text-1); 
+}
+
+.wrapper{
+  width: 95%; 
+  max-width: 1600px; 
+  margin: 10px auto;
+  border-radius: 10px; 
+  background-color: var(--background-2);
+  overflow: hidden;
+}
+
+.header{
+  border-bottom: 2px solid var(--background-1);
+
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+}
+
+h1{
+  font-size: 1.8em; 
+  color: var(--accent-2);
+}
