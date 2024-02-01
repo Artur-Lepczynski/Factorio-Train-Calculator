@@ -9,7 +9,7 @@
 
 .wrapper{
   width: 95%; 
-  max-width: 1600px; 
+  max-width: 900px; 
   margin: 10px auto;
   border-radius: 10px; 
   background-color: var(--background-2);
