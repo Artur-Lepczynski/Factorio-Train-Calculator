@@ -13,7 +13,6 @@
   margin: 10px auto;
   border-radius: 10px; 
   background-color: var(--background-2);
-  overflow: hidden;
 }
 
 .header{
