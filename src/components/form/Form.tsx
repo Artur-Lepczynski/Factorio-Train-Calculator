@@ -1,26 +1,49 @@
 import { useState } from "react";
 import style from "./Form.module.css";
+import FormItem from "./FormItem";
+
+interface FormData {
+  target: number | string;
+  wagons: number | string;
+}
 
 export default function Form() {
-  const [target, setTarget] = useState<number>(1);
+  const [formData, setFormData] = useState<FormData>({
+    target: 1,
+    wagons: 1,
+  });
 
-  function handleTargetChange(event: React.ChangeEvent<HTMLInputElement>) {
-    setTarget(+event.target.value); 
+  type formDataTypes = "target" | "wagons";
+
+  function handleFromDataChange(type: formDataTypes, value: number | string) {
+    setFormData((previous) => {
+      if (type === "wagons" || type === "target") {
+        if (value !== "") value = +value;
+      }
+
+      return {
+        ...previous,
+        [type]: value,
+      };
+    });
   }
 
   return (
     <div className={style.wrapper}>
-      <div className={style["form-item"]}>
-        <label htmlFor="targetInput">Target</label>
-        <input
-          id="targetInput"
-          type="number"
-          min="1"
-          max="1000"
-          value={target}
-          onChange={handleTargetChange}
-        ></input>
-      </div>
+      <FormItem
+        type="number"
+        label="Target items per second"
+        onChange={(value) => handleFromDataChange("target", value)}
+        value={formData.target}
+      />
+      <FormItem
+        type="number"
+        label="Number of wagons"
+        max={12}
+        onChange={(value) => handleFromDataChange("wagons", value)}
+        value={formData.wagons}
+      />
+      <button>Calc</button>
     </div>
   );
 }

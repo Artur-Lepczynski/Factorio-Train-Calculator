@@ -1,0 +1,34 @@
+.form-item{
+  height: 60px;
+
+  padding: 5px;
+  margin: 5px;
+  
+  display: flex;
+  justify-content: space-between; 
+  align-items: center;
+}
+
+.form-item label{
+  margin: 0px 0px 5px;
+}
+
+.form-item input{
+  padding: 5px 10px;
+  border: 2px solid var(--accent-1);
+  border-radius: 10px;
+  background-color: var(--background-4);
+  color: var(--text-1); 
+  font-family: Kanit, sans-serif;
+}
+
+.form-item input:focus{
+  outline: none;
+  border-color: var(--accent-2);
+}
+
+@media (max-width: 430px){
+  .form-item input{
+    width: 70px;
+  }
+}

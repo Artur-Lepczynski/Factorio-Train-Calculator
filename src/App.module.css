@@ -28,3 +28,9 @@ h1{
   font-size: 1.8em; 
   color: var(--accent-2);
 }
+
+@media (max-width: 400px){
+  h1{
+    font-size: 1.1em;
+  }
+}

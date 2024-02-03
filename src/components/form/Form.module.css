@@ -4,15 +4,3 @@
   box-sizing: border-box;
   background-color: var(--background-3)
 }
-
-.form-item{
-  height: 60px;
-
-  padding: 5px;
-  margin: 5px;
-  
-  display: flex;
-  flex-direction: column;
-  justify-content: center; 
-  align-items: flex-start;
-}
