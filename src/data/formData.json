@@ -43,5 +43,12 @@
     {"id": "5", "name": "5"}, 
     {"id": "6", "name": "6"},
     {"id": "7", "name": "7"}
+  ], 
+  "inserterBaselineSpeed": [
+    {"id": "1", "speed": 0.6},
+    {"id": "2", "speed": 0.83},
+    {"id": "3", "speed": 2.31},
+    {"id": "4", "speed": 2.31}
+
   ] 
 }

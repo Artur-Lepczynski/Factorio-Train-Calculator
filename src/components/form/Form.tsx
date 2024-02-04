@@ -1,16 +1,17 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import style from "./Form.module.css";
 import FormItem from "./FormItem";
 
 import formData from "../../data/formData.json";
+import Button from "../UI/Button";
 
 interface FormData {
   target: number | string;
   wagons: number | string;
-  inserter: string;
-  stackSize: string;
-  inserterNumber: string; 
-  capacityBonus: string; 
+  inserter: number;
+  stackSize: number;
+  inserterNumber: number;
+  capacityBonus: number;
 }
 
 export type formDataTypes =
@@ -19,17 +20,19 @@ export type formDataTypes =
   | "inserter"
   | "stackSize"
   | "inserterNumber"
-  | "capacityBonus"
+  | "capacityBonus";
 
 export default function Form() {
   const [formInputData, setFormInputData] = useState<FormData>({
-    target: 1,
+    target: 15,
     wagons: 1,
-    inserter: "1",
-    stackSize: "100",
-    inserterNumber: "6", 
-    capacityBonus: "1"
+    inserter: 1,
+    stackSize: 100,
+    inserterNumber: 6,
+    capacityBonus: 1,
   });
+
+  const [formIsValid, setFormIsValid] = useState<boolean>(true);
 
   function handleFromDataChange(type: formDataTypes, value: number | string) {
     setFormInputData((previous) => {
@@ -39,9 +42,54 @@ export default function Form() {
 
       return {
         ...previous,
-        [type]: value,
+        [type]: +value,
       };
     });
+  }
+
+  useEffect(()=>{
+    if(typeof formInputData.target === "string" || typeof formInputData.wagons === "string"){
+      setFormIsValid(false);
+    }else{
+      if(formInputData.target < 0 || formInputData.target > 1000 || formInputData.wagons < 0 || formInputData.wagons > 12){
+        setFormIsValid(false);
+      }else{
+        setFormIsValid(true); 
+      }
+    }
+  }, [formInputData])
+
+  function handleCalculate() {
+    if(formIsValid){
+      const itemQuantity = 40 * +formInputData.wagons * formInputData.stackSize; 
+      const inserterSpeed = formData.inserterBaselineSpeed[formInputData.inserter - 1].speed;
+
+      let handStackSize: number;
+      if(formInputData.inserter <= 3){
+        if(formInputData.capacityBonus === 1) handStackSize = 1; 
+        else if(formInputData.capacityBonus < 7) handStackSize = 2; 
+        else handStackSize = 3; 
+      }else{
+        if(formInputData.capacityBonus < 5) handStackSize = 2 + formInputData.capacityBonus; 
+        else handStackSize = 6 + (formInputData.capacityBonus - 4) * 2;
+      }
+      if(handStackSize > formInputData.stackSize) handStackSize = formInputData.stackSize;  
+
+      const itemsPerSecond = inserterSpeed * handStackSize * formInputData.inserterNumber;
+      const loadTime = itemQuantity / itemsPerSecond; 
+
+      const supportTime = itemQuantity / +formInputData.target; 
+      const travelTime = supportTime - loadTime * 2; 
+      
+      
+      console.log("items total:", itemQuantity); 
+      console.log("items unloaded per second:", itemsPerSecond); 
+      console.log("time to unload:", loadTime); 
+
+      console.log("time with resources (support time):", supportTime); 
+      console.log("time to travel (2 ways):", travelTime);
+    }
+
   }
 
   return (
@@ -92,6 +140,9 @@ export default function Form() {
         dropdownType="string"
         options={formData.inserterCapacityBonusLevel}
       />
+      <Button className={style.button} onClick={handleCalculate} disabled={!formIsValid}>
+        Calculate
+      </Button>
     </div>
   );
 }

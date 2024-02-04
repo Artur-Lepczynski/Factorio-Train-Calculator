@@ -28,7 +28,7 @@ export default function Dropdown(props: DropdownProps) {
   );
 
   useEffect(() => {
-    const optionItem = props.options.find((item) => props.value === item.id);
+    const optionItem = props.options.find((item) => ""+props.value === item.id);
     if (props.optionsType === "string") {
       setCurrentOption(optionItem?.name || "Invalid value");
     } else if (props.optionsType === "icon") {
