@@ -49,6 +49,9 @@
 .dropdown{
   width: 100%; 
   background-color: var(--background-4); 
+  border: 2px solid var(--background-1); 
+  border-top: none;
+  box-sizing: border-box;
   position: absolute;
   top: 50px;
   left: 0px;

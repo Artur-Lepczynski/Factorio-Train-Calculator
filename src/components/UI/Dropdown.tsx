@@ -62,7 +62,6 @@ export default function Dropdown(props: DropdownProps) {
   }
 
   function handleDropdownSelect(selected: DropdownOption) {
-    // console.log("selected: ", selected);
     props.onSelect(selected.id);
   }
 
