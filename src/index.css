@@ -10,6 +10,8 @@
 
   --accent-1:#cc6d08; 
   --accent-2:#ff8400; 
+
+  --error-1: rgb(214, 14, 14);
 }
 
 body {

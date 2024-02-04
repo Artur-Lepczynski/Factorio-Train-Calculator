@@ -4,6 +4,7 @@ import FormItem from "./FormItem";
 
 import formData from "../../data/formData.json";
 import Button from "../UI/Button";
+import { ResultData } from "../../App";
 
 interface FormData {
   target: number | string;
@@ -22,7 +23,11 @@ export type formDataTypes =
   | "inserterNumber"
   | "capacityBonus";
 
-export default function Form() {
+  interface FormProps{
+    onCalc: (result: ResultData)=>void; 
+  }
+
+export default function Form(props: FormProps) {
   const [formInputData, setFormInputData] = useState<FormData>({
     target: 15,
     wagons: 1,
@@ -81,15 +86,15 @@ export default function Form() {
       const supportTime = itemQuantity / +formInputData.target; 
       const travelTime = supportTime - loadTime * 2; 
       
-      
-      console.log("items total:", itemQuantity); 
-      console.log("items unloaded per second:", itemsPerSecond); 
-      console.log("time to unload:", loadTime); 
-
-      console.log("time with resources (support time):", supportTime); 
-      console.log("time to travel (2 ways):", travelTime);
+      props.onCalc({
+        target: +formInputData.target, 
+        itemQuantity, 
+        itemsPerSecond, 
+        loadTime, 
+        supportTime, 
+        travelTime
+      });
     }
-
   }
 
   return (

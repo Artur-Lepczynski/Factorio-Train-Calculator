@@ -1,0 +1,36 @@
+.wrapper{
+  width: 100%; 
+  padding: 5px 0px;
+}
+
+.no-result-text{
+  font-size: 1.3em;
+  text-align: center; 
+}
+
+.result-wrapper{
+  margin: 20px 0px;
+}
+
+.result-item{
+  margin: 25px;
+}
+
+.result-description{
+  text-align: center;
+  margin: 0px;
+}
+
+.result-disclaimer{
+  margin: 0px;
+  text-align: center;
+  font-size: 0.9em;
+  color: var(--error-1)
+}
+
+.result-quantity{
+  margin: 5px;
+  color: var(--accent-2);
+  text-align: center;
+  font-size: 1.5em;
+}
