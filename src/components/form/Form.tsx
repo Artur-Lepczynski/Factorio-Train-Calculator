@@ -1,32 +1,41 @@
 import { useState } from "react";
 import style from "./Form.module.css";
 import FormItem from "./FormItem";
-import Dropdown from "../UI/Dropdown";
+
+import formData from "../../data/formData.json";
 
 interface FormData {
   target: number | string;
   wagons: number | string;
   inserter: string;
   stackSize: string;
+  inserterNumber: string; 
+  capacityBonus: string; 
 }
 
-export type formDataTypes = "target" | "wagons" | "inserter" | "stackSize";
+export type formDataTypes =
+  | "target"
+  | "wagons"
+  | "inserter"
+  | "stackSize"
+  | "inserterNumber"
+  | "capacityBonus"
 
 export default function Form() {
-  const [formData, setFormData] = useState<FormData>({
+  const [formInputData, setFormInputData] = useState<FormData>({
     target: 1,
     wagons: 1,
     inserter: "1",
     stackSize: "100",
+    inserterNumber: "6", 
+    capacityBonus: "1"
   });
 
   function handleFromDataChange(type: formDataTypes, value: number | string) {
-    setFormData((previous) => {
+    setFormInputData((previous) => {
       if (type === "wagons" || type === "target") {
         if (value !== "") value = +value;
       }
-
-      console.log(type, value); 
 
       return {
         ...previous,
@@ -42,50 +51,47 @@ export default function Form() {
         type="number"
         label="Target items per second"
         onChange={(value) => handleFromDataChange("target", value)}
-        value={formData.target}
+        value={formInputData.target}
       />
       <FormItem
         type="number"
         label="Number of wagons"
         max={12}
         onChange={(value) => handleFromDataChange("wagons", value)}
-        value={formData.wagons}
+        value={formInputData.wagons}
       />
       <FormItem
         type="dropdown"
         label="Inserter type"
         onChange={(value) => handleFromDataChange("inserter", value)}
-        value={formData.inserter}
+        value={formInputData.inserter}
         dropdownType="icon"
-        options={[
-          {
-            id: "1",
-            name: "Burner Inserter",
-            iconUrl:
-              "https://wiki.factorio.com/images/thumb/Burner_inserter.png/32px-Burner_inserter.png",
-          },
-          {
-            id: "2",
-            name: "Inserter",
-            iconUrl:
-              "https://wiki.factorio.com/images/thumb/Inserter.png/32px-Inserter.png",
-          },
-        ]}
+        options={formData.inserterType}
       />
       <FormItem
         type="dropdown"
         label="Item stack size"
         onChange={(value) => handleFromDataChange("stackSize", value)}
-        value={formData.stackSize}
+        value={formInputData.stackSize}
         dropdownType="string"
-        options={[
-          { id: "10", name: "10" },
-          { id: "50", name: "50" },
-          { id: "100", name: "100" },
-          { id: "200", name: "200" },
-        ]}
+        options={formData.itemStackSize}
       />
-      <button>Calc</button>
+      <FormItem
+        type="dropdown"
+        label="Inserters per wagon"
+        onChange={(value) => handleFromDataChange("inserterNumber", value)}
+        value={formInputData.inserterNumber}
+        dropdownType="string"
+        options={formData.inserterNumber}
+      />
+      <FormItem
+        type="dropdown"
+        label="Inserter capacity bonus level"
+        onChange={(value) => handleFromDataChange("capacityBonus", value)}
+        value={formInputData.capacityBonus}
+        dropdownType="string"
+        options={formData.inserterCapacityBonusLevel}
+      />
     </div>
   );
 }

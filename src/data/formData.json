@@ -1,0 +1,47 @@
+{
+  "inserterType": [
+    {
+      "id": "1",
+      "name": "Burner inserter",
+      "iconUrl":
+        "https://wiki.factorio.com/images/thumb/Burner_inserter.png/32px-Burner_inserter.png"
+    },
+    {
+      "id": "2",
+      "name": "Inserter",
+      "iconUrl":
+        "https://wiki.factorio.com/images/thumb/Inserter.png/32px-Inserter.png"
+    },
+    {
+      "id": "3",
+      "name": "Fast inserter",
+      "iconUrl":
+        "https://wiki.factorio.com/images/thumb/Fast_inserter.png/32px-Fast_inserter.png"
+    },
+    {
+      "id": "4",
+      "name": "Stack inserter",
+      "iconUrl":
+        "https://wiki.factorio.com/images/thumb/Stack_inserter.png/32px-Stack_inserter.png"
+    }
+  ], 
+  "itemStackSize": [
+    { "id": "10", "name": "10" },
+    { "id": "50", "name": "50" },
+    { "id": "100", "name": "100" },
+    { "id": "200", "name": "200" }
+  ], 
+  "inserterNumber": [
+    {"id": "6", "name": "6"}, 
+    {"id": "12", "name": "12"} 
+  ], 
+  "inserterCapacityBonusLevel": [
+    {"id": "1", "name": "1"}, 
+    {"id": "2", "name": "2"}, 
+    {"id": "3", "name": "3"}, 
+    {"id": "4", "name": "4"}, 
+    {"id": "5", "name": "5"}, 
+    {"id": "6", "name": "6"},
+    {"id": "7", "name": "7"}
+  ] 
+}
